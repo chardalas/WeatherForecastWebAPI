@@ -3,16 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
+using WeatherForecast.Client;
+using static WeatherForecast.Client.OpenWeatherClient;
 
 namespace WeatherForecast.Controllers
 {
     public class DefaultController : ApiController
     {
         // GET: api/Default
-        public IEnumerable<string> Get()
+        public Task<OpenWeatherResponse> Get()
         {
-            return new string[] { "value1", "value2" };
+            OpenWeatherClient wc = new OpenWeatherClient();
+
+            var t =  wc.GetProductAsync("ss");
+
+            return t;
         }
 
         // GET: api/Default/5
