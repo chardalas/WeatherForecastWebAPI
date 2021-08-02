@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { OpenweathercontrolsComponent } from './openweathercontrols/openweathercontrols.component';
 import { OpenweatherviewComponent } from './openweatherview/openweatherview.component';
-
+import { OpenweatherserviceService } from './openweatherservice.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,7 +14,7 @@ import { OpenweatherviewComponent } from './openweatherview/openweatherview.comp
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [OpenweatherserviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
