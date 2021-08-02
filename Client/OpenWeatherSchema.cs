@@ -2,12 +2,13 @@
 
 namespace WeatherForecast.Client
 {
-	public class OpenWeatherResponse
+	public class OpenWeatherSchema
 	{
 		public string Name { get; set; }
 		public int Timezone { get; set; }
 		public Wind Wind { get; set; }
 		public Clouds Clouds { get; set; }
+		public Coord Coord { get; set; }
 		public Sys Sys { get; set; }
 		public IEnumerable<Weather> Weather { get; set; }
 		public Main Main { get; set; }
@@ -23,6 +24,12 @@ namespace WeatherForecast.Client
 		public int All { get; set; }
 	}
 
+	public class Coord
+	{
+		public double Lon { get; set; }
+		public double Lat { get; set; }
+	}
+	
 	public class Sys
 	{
 		public string Country { get; set; }

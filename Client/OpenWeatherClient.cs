@@ -1,18 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using System.Web;
+using WeatherForecast.Controllers;
 
 namespace WeatherForecast.Client
 {
-	// 1. Build the Web API 
-	// 2. Consume data from openweather
-	public class OpenWeatherClient
+	public class OpenWeatherClient : IOpenWeatherClient
 	{
+		private static readonly HttpClient client;
+
+		static OpenWeatherClient()
+		{
+			client = new HttpClient();
+			client.BaseAddress = new Uri("https://api.openweathermap.org");
+		}
+
 		public class Product
 		{
 			public string Id { get; set; }
@@ -21,7 +24,8 @@ namespace WeatherForecast.Client
 			public string Category { get; set; }
 		}
 
-		static HttpClient client = new HttpClient();
+
+		//static HttpClient client = new HttpClient();
 
 		static void ShowProduct(Product product)
 		{
@@ -39,19 +43,49 @@ namespace WeatherForecast.Client
 			return response.Headers.Location;
 		}
 
-		public async Task<OpenWeatherResponse> GetProductAsync(string path)
-		{
-			//Product product = null;
-			HttpResponseMessage response = await client.GetAsync("https://api.openweathermap.org/data/2.5/weather?q=valetta&appid=8e9a1d8d6057312c86a65f5803afbbfa");
+		//public async Task<OpenWeatherSchema> GetWeatherByHourAsync(string city)
+		//{
 
-			var product = new OpenWeatherResponse();
+		//	var schema = GetWeatherByCityAsync(city);
+		//	var lat = schema.Result.Coord.Lat;
+		//	var lon = schema.Result.Coord.Lon;
+
+		//	HttpResponseMessage response = await client.GetAsync($"/data/2.5/onecall?lat={lat}&lon={lon}&exclude=current,minutely,daily,alerts,daily&appid=8e9a1d8d6057312c86a65f5803afbbfa");
+
+		//	var weatherSchema = new OpenWeatherSchema();
+
+		//	if (response.IsSuccessStatusCode)
+		//	{
+		//		weatherSchema = await response.Content.ReadAsAsync<OpenWeatherSchema>();
+		//	}
+
+		//	return weatherSchema;
+		//}
+
+		//public async Task<OpenWeatherSchema> GetWeatherByDayAsync(string path)
+		//{
+
+		//}
+
+		//public async Task<OpenWeatherSchema> GetWeatherCurrentAsync(string path)
+		//{
+
+		//}
+
+		public async Task<OpenWeatherSchema> GetWeatherByCityAsync(string city)
+		{
+			HttpResponseMessage response = await client.GetAsync($"/data/2.5/weather?q={city}&appid=8e9a1d8d6057312c86a65f5803afbbfa&unit=mertics");
+
+			//var tt = JsonSerializer.DeserializeAsync<OpenWeatherSchema>(await response);
+
+			var weatherSchema = new OpenWeatherSchema();
 
 			if (response.IsSuccessStatusCode)
 			{
-				product = await response.Content.ReadAsAsync<OpenWeatherResponse>();
+				weatherSchema = await response.Content.ReadAsAsync<OpenWeatherSchema>();
 			}
-
-			return product;
+			
+			return weatherSchema;
 		}
 
 		static async Task<Product> UpdateProductAsync(Product product)
@@ -70,7 +104,7 @@ namespace WeatherForecast.Client
 			HttpResponseMessage response = await client.DeleteAsync(
 				$"api/products/{id}");
 			return response.StatusCode;
-		}		
+		}
 
 		class Program
 		{

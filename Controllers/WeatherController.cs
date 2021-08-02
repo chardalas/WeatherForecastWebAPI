@@ -1,22 +1,32 @@
-﻿using System.Threading.Tasks;
+﻿using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Description;
 using WeatherForecast.Client;
 
 namespace WeatherForecast.Controllers
 {
 	public class WeatherController : ApiController
 	{
-		public OpenWeatherClient owc;
+		private IOpenWeatherClient openWeatherClient;
 
 		public WeatherController()
 		{
-			owc = new OpenWeatherClient(); // re-think of this one
+			openWeatherClient = new OpenWeatherClient();
 		}
 
 		// GET: api/Default
-		public Task<OpenWeatherSchema> Get(string city)
+		[ResponseType(typeof(OpenWeatherSchema))]
+		public async Task<IHttpActionResult> Get(string city)
 		{
-			var t =  owc.GetProductAsync(city);
+			var t = openWeatherClient.GetWeatherByCityAsync(city);
+
+			return Ok(t);
+		}
+
+		public Task<OpenWeatherSchema> GetHourly(string lanf)
+		{
+			var t = openWeatherClient.GetWeatherByCityAsync(lanf);
 
 			return t;
 		}
@@ -28,12 +38,12 @@ namespace WeatherForecast.Controllers
 		}
 
 		// POST: api/Default
-		public void Post([FromBody]string value)
+		public void Post([FromBody] string value)
 		{
 		}
 
 		// PUT: api/Default/5
-		public void Put(int id, [FromBody]string value)
+		public void Put(int id, [FromBody] string value)
 		{
 		}
 
