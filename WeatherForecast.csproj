@@ -87,7 +87,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Client\OpenWeatherSchema.cs" />
     <Compile Include="Client\OpenWeatherClient.cs" />
-    <Compile Include="Controllers\DefaultController.cs" />
+    <Compile Include="Controllers\WeatherController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
