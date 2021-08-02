@@ -5,6 +5,10 @@ import { AppComponent } from './app.component';
 import { OpenweathercontrolsComponent } from './openweathercontrols/openweathercontrols.component';
 import { OpenweatherviewComponent } from './openweatherview/openweatherview.component';
 import { OpenweatherserviceService } from './openweatherservice.service';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AppRoutingModule } from './app-routing.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -12,7 +16,10 @@ import { OpenweatherserviceService } from './openweatherservice.service';
     OpenweatherviewComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule,
+    FormsModule, 
+    ReactiveFormsModule, AppRoutingModule
   ],
   providers: [OpenweatherserviceService],
   bootstrap: [AppComponent]
