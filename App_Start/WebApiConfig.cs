@@ -1,4 +1,5 @@
 ﻿using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Net.Http.Headers;
 
 namespace WeatherForecast
@@ -19,6 +20,7 @@ namespace WeatherForecast
 			);
 
 			config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
+			config.EnableCors(new EnableCorsAttribute("*", "*", "*"));
 		}
 	}
 }

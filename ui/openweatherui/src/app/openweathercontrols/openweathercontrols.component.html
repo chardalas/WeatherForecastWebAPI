@@ -37,45 +37,60 @@
         </form>
     </div>
 </div>
+<!-- 
+"Name": "Athens",
+    "Timezone": 10800,
+    "Wind": {
+        "Speed": "0.89"
+    },
+    "Clouds": {
+        "All": 0
+    },
+    "Coord": {
+        "Lon": 23.7162,
+        "Lat": 37.9795
+    },
+    "Sys": {
+        "Country": "GR",
+        "Sunrise": 1627961389,
+        "Sunset": 1628011964
+    },
+    "Weather": [
+        {
+            "ID": 800,
+            "Main": "Clear",
+            "Description": "clear sky",
+            "Icon": "01d"
+        }
+    ],
+    "Main": {
+        "Temp": 310.3,
+        "Feels_Like": 309.13,
+        "Temp_Min": 308.47,
+        "Temp_Max": 311.64,
+        "Pressure": 1011,
+        "Humidity": 22.0
+    } -->
+    <h3>{{CurrentWeather.Name}}</h3>
+    <h3>Temp: {{CurrentWeather.Main?.Temp - 273.15 | number:'1.0-0'}}<sup>o</sup>C</h3>
+    <h3>Feels Like: {{CurrentWeather.Main?.Feels_Like - 273.15 | number:'1.0-0'}}<sup>o</sup>C</h3>    
 
+<!-- 
 <table class="table">
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Description</th>
-        <th scope="col">Temp</th>
-        <th scope="col">Feels Like</th>
-        <th scope="col">Temp Min</th>
-        <th scope="col">Temp Max</th>
-        <th scope="col">Pressure</th>
-        <th scope="col">Humidity</th>
-        <th scope="col">Lon</th>
-        <th scope="col">Lat</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Email</th>        
       </tr>
     </thead>
     <tbody>
         <tr *ngFor="let dataItem of CurrentWeather">
             <th scope="row">1</th>
-            <td>{{dataItem.Name}}</td>
-            <td>{{dataItem.Timezone}}</td>
-            <td>@mdo</td>    
+            <td>{{dataItem.FirstName}}</td>
+            <td>{{dataItem.LastName}}</td>
+            <td>{{dataItem.Email}}</td>            
         </tr>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td colspan="2">Larry the Bird</td>
-        <td>@twitter</td>
-      </tr>
     </tbody>
-  </table>
+  </table> -->

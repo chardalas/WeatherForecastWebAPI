@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { OpenweatherserviceService } from '../openweatherservice.service';
+import { OpenweatherserviceService } from 'src/app/openweatherservice.service';
 
 @Component({
   selector: 'app-openweathercontrols',
@@ -18,7 +18,7 @@ export class OpenweathercontrolsComponent implements OnInit {
 
   refreshCurrentWeather(){
     this.service.getWeather().subscribe(data=>{
-      this.CurrentWeather=data; 
+        this.CurrentWeather=data; 
       });
   }
 
