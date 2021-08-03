@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class OpenweatherserviceService {
 
-  readonly APIUrl = "http://localhost:54426";
+  readonly APIUrl = "http://localhost:54426/weather?city=athens";
 
   constructor(private http:HttpClient) { }
 

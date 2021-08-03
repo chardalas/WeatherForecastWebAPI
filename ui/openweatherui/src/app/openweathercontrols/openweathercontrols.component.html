@@ -2,31 +2,80 @@
 <div class="row">
     <div class="col">
         <form>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                <label class="form-check-label" for="flexRadioDefault1">
-                  Current Weather
-                </label>
+            <div class="row mb-3">
+              <div class="col-sm-10">
+                <input type="text" class="form-control" placeholder="City" aria-label="City">                
               </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                <label class="form-check-label" for="flexRadioDefault2">
-                    1 hour
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                <label class="form-check-label" for="flexRadioDefault2">
-                    2 Days
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                <label class="form-check-label" for="flexRadioDefault2">
-                    4 Days
-                </label>
-              </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-  </div>    
-</div>  
+            </div>            
+            <div class="col-sm-10">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1">
+                    <label class="form-check-label" for="gridRadios1">
+                        Current
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                    <label class="form-check-label" for="gridRadios2">
+                        1 hour
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3">
+                    <label class="form-check-label" for="gridRadios3">
+                        2 Days
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios4" value="option4">
+                    <label class="form-check-label" for="gridRadios4">
+                        4 Days
+                    </label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Description</th>
+        <th scope="col">Temp</th>
+        <th scope="col">Feels Like</th>
+        <th scope="col">Temp Min</th>
+        <th scope="col">Temp Max</th>
+        <th scope="col">Pressure</th>
+        <th scope="col">Humidity</th>
+        <th scope="col">Lon</th>
+        <th scope="col">Lat</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let dataItem of CurrentWeather">
+            <th scope="row">1</th>
+            <td>{{dataItem.Name}}</td>
+            <td>{{dataItem.Timezone}}</td>
+            <td>@mdo</td>    
+        </tr>
+      <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td colspan="2">Larry the Bird</td>
+        <td>@twitter</td>
+      </tr>
+    </tbody>
+  </table>

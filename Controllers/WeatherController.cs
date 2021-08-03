@@ -16,12 +16,12 @@ namespace WeatherForecast.Controllers
 		}
 
 		// GET: api/Default
-		[ResponseType(typeof(OpenWeatherSchema))]
-		public async Task<IHttpActionResult> Get(string city)
+		//[ResponseType(typeof(OpenWeatherSchema))]
+		public Task<OpenWeatherSchema> Get(string city)
 		{
 			var t = openWeatherClient.GetWeatherByCityAsync(city);
 
-			return Ok(t);
+			return t;
 		}
 
 		public Task<OpenWeatherSchema> GetHourly(string lanf)
