@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { OpenweathercontrolsComponent } from './openweathercontrols/openweathercontrols.component';
+import { currentWeather } from './currentWeather/currentWeather';
 import { OpenweatherloginComponent } from './openweatherlogin/openweatherlogin.component';
 import { OpenweatherserviceService } from './openweatherservice.service';
 import { HttpClientModule } from '@angular/common/http';
@@ -13,7 +13,7 @@ import { RouterModule } from '@angular/router';
 @NgModule({
   declarations: [
     AppComponent,
-    OpenweathercontrolsComponent,
+    currentWeather,
     OpenweatherloginComponent
   ],
   imports: [

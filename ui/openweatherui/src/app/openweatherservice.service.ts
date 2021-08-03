@@ -5,14 +5,15 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
 export class OpenweatherserviceService {
 
-  readonly APIUrl = "http://localhost:54426/weather?city=athens";
+  readonly CurrentWeather = "http://localhost:54426/weather?city=athens";
 
   constructor(private http:HttpClient) { }
 
-  getWeather():Observable<any[]>{
-    return this.http.get<any>(this.APIUrl);
+  getCurrentWeather():Observable<any[]>{
+    return this.http.get<any>(this.CurrentWeather);
   }
 
 }
