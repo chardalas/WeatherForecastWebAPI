@@ -8,12 +8,12 @@ import { Observable } from 'rxjs';
 
 export class OpenweatherserviceService {
 
-  readonly CurrentWeather = "http://localhost:54426/weather?city=athens";
+  readonly currentWeather = "http://localhost:54426/weather?city=athens";
 
   constructor(private http:HttpClient) { }
 
   getCurrentWeather():Observable<any[]>{
-    return this.http.get<any>(this.CurrentWeather);
+    return this.http.get<any>(this.currentWeather);
   }
 
 }

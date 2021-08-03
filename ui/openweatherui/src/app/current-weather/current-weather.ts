@@ -3,10 +3,10 @@ import { OpenweatherserviceService } from 'src/app/openweatherservice.service';
 
 @Component({
   selector: 'app-currentWeather',
-  templateUrl: './currentWeather.component.html',
-  styleUrls: ['./currentWeather.component.css']
+  templateUrl: './current-weather.component.html',
+  styleUrls: ['./current-weather.component.css']
 })
-export class currentWeather implements OnInit {
+export class CurrentWeatherCompoment implements OnInit {
 
   constructor(private service:OpenweatherserviceService) { }
 

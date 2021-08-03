@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { currentWeather } from './currentWeather/currentWeather';
+import { CurrentWeatherCompoment } from './current-weather/current-weather';
 import { OpenweatherloginComponent } from './openweatherlogin/openweatherlogin.component';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path:'weather',component:currentWeather },
+  { path:'weather',component:CurrentWeatherCompoment },
   { path:'',component:OpenweatherloginComponent }
 ];
 
