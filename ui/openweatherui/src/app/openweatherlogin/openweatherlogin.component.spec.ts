@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OpenweatherviewComponent } from './openweatherview.component';
+import { OpenweatherloginComponent } from './openweatherlogin.component';
 
-describe('OpenweatherviewComponent', () => {
-  let component: OpenweatherviewComponent;
-  let fixture: ComponentFixture<OpenweatherviewComponent>;
+describe('OpenweatherloginComponent', () => {
+  let component: OpenweatherloginComponent;
+  let fixture: ComponentFixture<OpenweatherloginComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ OpenweatherviewComponent ]
+      declarations: [ OpenweatherloginComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OpenweatherviewComponent);
+    fixture = TestBed.createComponent(OpenweatherloginComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
