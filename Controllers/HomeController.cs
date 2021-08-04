@@ -25,22 +25,22 @@ namespace WeatherForecast.Controllers
 
         public IHttpActionResult GetUserById(int id)
         {
-            User student = null;
+            User user = null;
 
             using (var db = new OpenWeatherDbContext())
             {
-                student = db.Users.Where(u => u.ID == id).Select(u => u).FirstOrDefault();
+                user = db.Users.Where(u => u.ID == id).Select(u => u).FirstOrDefault();
             }
 
-            if (student == null)
+            if (user == null)
             {
                 return NotFound();
             }
 
-            return Ok(student);
+            return Ok(user);
         }
 
-        public IHttpActionResult PostNewUser([FromBody]User user)
+        public IHttpActionResult PostNewUser([FromBody] User user)
         {
             if (!ModelState.IsValid)
                 return BadRequest("Invalid data.");
