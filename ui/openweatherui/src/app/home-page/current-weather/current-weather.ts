@@ -22,10 +22,11 @@ export class CurrentWeatherComponent implements OnInit {
   onItemChange(forecast:any){
     console.log(" Value is : ", forecast);
  }
-  refreshCurrentWeather(city: string){
+
+  refreshCurrentWeather(city: string) {
     console.log(this.currentWeather);
     this.service.getCurrentWeather(city).subscribe(data=>{
-        this.currentWeather=data; 
-      });
+      this.currentWeather=data;
+    });
   }
 }
