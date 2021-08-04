@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { OpenweatherserviceService } from 'src/app/openweatherservice.service';
 
 @Component({
   selector: 'app-one-hour-forecast',

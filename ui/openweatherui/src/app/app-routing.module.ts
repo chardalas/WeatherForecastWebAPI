@@ -1,11 +1,16 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { CurrentWeatherCompoment } from './current-weather/current-weather';
+import { CurrentWeatherComponent } from './current-weather/current-weather';
+import { OneHourForecastComponent } from './one-hour-forecast/one-hour-forecast.component';
+import { TwoDaysForecastComponent } from './two-days-forecast/two-days-forecast.component';
+import { SevenDaysForecastComponent } from './seven-days-forecast/seven-days-forecast.component';
 import { OpenweatherloginComponent } from './openweatherlogin/openweatherlogin.component';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path:'weather',component:CurrentWeatherCompoment },
+  { path:'current-weather',component:CurrentWeatherComponent },
+  { path:'one-hour-forecast',component:OneHourForecastComponent },
+  { path:'two-days-forecast',component:TwoDaysForecastComponent },
+  { path:'',component:SevenDaysForecastComponent },
   { path:'',component:OpenweatherloginComponent }
 ];
 

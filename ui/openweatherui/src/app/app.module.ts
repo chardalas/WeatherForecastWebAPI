@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { CurrentWeatherCompoment } from './current-weather/current-weather';
+import { HttpClientModule } from '@angular/common/http';
+import { CurrentWeatherComponent } from './current-weather/current-weather';
 import { OpenweatherloginComponent } from './openweatherlogin/openweatherlogin.component';
 import { OpenweatherserviceService } from './openweatherservice.service';
-import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
@@ -18,7 +18,7 @@ import { TopBarComponent } from './top-bar/top-bar.component';
 @NgModule({
   declarations: [
     AppComponent,
-    CurrentWeatherCompoment,
+    CurrentWeatherComponent,
     OpenweatherloginComponent,
     OneHourForecastComponent,
     TwoDaysForecastComponent,
