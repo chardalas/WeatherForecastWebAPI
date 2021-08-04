@@ -7,7 +7,7 @@ import { OpenweatherserviceService } from 'src/app/openweatherservice.service';
   styleUrls: ['./current-weather.component.css'],   
 })
 export class CurrentWeatherComponent implements OnInit {
-
+  
   city: string;
   forecast: string;
   
@@ -22,7 +22,7 @@ export class CurrentWeatherComponent implements OnInit {
   onItemChange(forecast:any){
     console.log(" Value is : ", forecast);
  }
-
+ 
   refreshCurrentWeather(city: string) {
     console.log(this.currentWeather);
     this.service.getCurrentWeather(city).subscribe(data=>{

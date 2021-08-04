@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CurrentWeatherComponent } from './current-weather';
 
-describe('currentWeather', () => {
+describe('CurrentWeatherComponent', () => {
   let component: CurrentWeatherComponent;
   let fixture: ComponentFixture<CurrentWeatherComponent>;
 
