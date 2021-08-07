@@ -9,18 +9,18 @@ import { Injectable } from '@angular/core';
 @Component({
   selector: 'app-current-weather',
   templateUrl: './current-weather.component.html',
-  styleUrls: ['./current-weather.component.css'],   
+  styleUrls: ['./current-weather.component.css'],
 })
 export class CurrentWeatherComponent implements OnInit {
-  
+
   city: string;
   forecast: string;
-  currentWeather:any = <any>{};
+  currentWeather: any = <any>{};
   salamoura: string;
-  
+
   //constructor(private service:OpenweatherserviceService) { }
 
-  constructor() { 
+  constructor() {
     this.currentWeather = <any>{};
     this.city = "athens";
   }
@@ -28,15 +28,15 @@ export class CurrentWeatherComponent implements OnInit {
   ngOnInit(): void {
     //console.log(this.currentWeather);
     console.log("sssss");
-   //this.refreshCurrentWeather(this.currentWeather) ;
+    //this.refreshCurrentWeather(this.currentWeather) ;
   }
-  
-  onItemChange(forecast:any){
-  //  console.log(" Value is : ", forecast);
- }
- 
-  refreshCurrentWeather(currentWeather: any) {     
-    this.city='ad';
+
+  onItemChange(forecast: any) {
+    //  console.log(" Value is : ", forecast);
+  }
+
+  refreshCurrentWeather(currentWeather: any) {
+    this.city = 'ad';
     this.currentWeather = currentWeather;
     //console.log(this.salamoura);
     console.log("---");

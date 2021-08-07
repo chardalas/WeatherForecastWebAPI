@@ -1,45 +1,46 @@
 <app-top-bar></app-top-bar>
 <div id='container'>
-    
-    <h3 class="d-flex justify-content-center">OpenWeather API</h3>    
-<div class="row">
-    <div class="col">
-         <form [formGroup]="weatherSearch" (ngSubmit) = "onSubmit()">
-            <div class="row mb-3">
-              <div class="col-sm-10">
-                <input type="text" class="form-control" value="city" name="city" placeholder="City" aria-label="City" formControlName="city">
-              </div>
-            </div>            
-            <div class="col-sm-10">
-                <div class="form-check">                    
-                    <input class="form-check-input" type="radio"  value="current" formControlName="forecast"/>
-                    <label class="form-check-label" for="current">
-                        Current
-                    </label>
+    <h3 class="d-flex justify-content-center">OpenWeather API</h3>
+    <div class="row">
+        <div class="col">
+            <form [formGroup]="weatherSearch" (ngSubmit)="onSubmit()">
+                <div class="row mb-3">
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" value="city" name="city" placeholder="City"
+                            aria-label="City" formControlName="city">
+                    </div>
                 </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio"   value="one-hour" formControlName="forecast"/>
-                    <label class="form-check-label" for="onehourforecast">
-                        1 hour
-                    </label>
+                <div class="col-sm-10">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" value="current" formControlName="forecast" />
+                        <label class="form-check-label" for="current">
+                            Current
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" value="one-hour" formControlName="forecast" />
+                        <label class="form-check-label" for="onehourforecast">
+                            1 hour
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" value="two-days" formControlName="forecast" />
+                        <label class="form-check-label" for="twodaysforecast">
+                            2 Days
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" value="seven-days" formControlName="forecast" />
+                        <label class="form-check-label" for="sevendaysforecast">
+                            4 Days
+                        </label>
+                    </div>
                 </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio"  value="two-days" formControlName="forecast"/>
-                    <label class="form-check-label" for="twodaysforecast">
-                        2 Days
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio"   value="seven-days" formControlName="forecast"/>
-                    <label class="form-check-label" for="sevendaysforecast">
-                        4 Days
-                    </label>
-                </div>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form> 
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
     </div>
-</div><!-- <app-top-bar></app-top-bar>
+    <!-- <app-top-bar></app-top-bar>
 <div id='container'>
     
     <h3 class="d-flex justify-content-center">OpenWeather API</h3>    

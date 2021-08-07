@@ -12,37 +12,37 @@ export class OpenweatherserviceService {
 
   private city: string;
   private forecast: string;
-  
-  currentWeather2:any = <any>{};
+
+  currentWeather2: any = <any>{};
 
   readonly currentWeather = "http://localhost:54426/weather?city=";
-  
+
   public setCurrentWea(value: any) {
     this.currentWeather2 = value;
   }
   public setTest(value: string) {
     this.city = value;
   }
-  
-  constructor(private http:HttpClient) { }
 
-  getCurrentWeather1(city: string):Observable<any[]>{    
+  constructor(private http: HttpClient) { }
+
+  getCurrentWeather1(city: string): Observable<any[]> {
     return this.http.get<any>(this.currentWeather + city);
   }
 
-  getOneHourForecast(city: string):Observable<any[]>{
+  getOneHourForecast(city: string): Observable<any[]> {
     return this.http.get<any>(this.currentWeather + city);
   }
 
-  getTwoDaysForecast(city: string):Observable<any[]>{
+  getTwoDaysForecast(city: string): Observable<any[]> {
     return this.http.get<any>(this.currentWeather + city);
   }
 
-  getSevenDaysForecast(city: string):Observable<any[]>{
+  getSevenDaysForecast(city: string): Observable<any[]> {
     return this.http.get<any>(this.currentWeather + city);
   }
 
-  getCurrentWeather(city: string):Observable<any[]>{
+  getCurrentWeather(city: string): Observable<any[]> {
     return this.http.get<any>(this.currentWeather + city);
   }
 
