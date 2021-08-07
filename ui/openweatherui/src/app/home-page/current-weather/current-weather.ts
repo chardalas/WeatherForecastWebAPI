@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { OpenweatherserviceService } from 'src/app/openweatherservice.service';
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
 
 @Component({
   selector: 'app-current-weather',
@@ -10,23 +15,35 @@ export class CurrentWeatherComponent implements OnInit {
   
   city: string;
   forecast: string;
-  
-  constructor(private service:OpenweatherserviceService) { }
-
   currentWeather:any = <any>{};
+  salamoura: string;
+  
+  //constructor(private service:OpenweatherserviceService) { }
+
+  constructor() { 
+    this.currentWeather = <any>{};
+    this.city = "athens";
+  }
 
   ngOnInit(): void {
-   this.refreshCurrentWeather(this.city) ;
+    //console.log(this.currentWeather);
+    console.log("sssss");
+   //this.refreshCurrentWeather(this.currentWeather) ;
   }
   
   onItemChange(forecast:any){
-    console.log(" Value is : ", forecast);
+  //  console.log(" Value is : ", forecast);
  }
  
-  refreshCurrentWeather(city: string) {
+  refreshCurrentWeather(currentWeather: any) {     
+    this.city='ad';
+    this.currentWeather = currentWeather;
+    //console.log(this.salamoura);
+    console.log("---");
     console.log(this.currentWeather);
-    this.service.getCurrentWeather(city).subscribe(data=>{
-      this.currentWeather=data;
-    });
+    console.log("---");
+    // this.service.getCurrentWeather(city).subscribe(data=>{
+    //   this.currentWeather=data;
+    // });
   }
 }
