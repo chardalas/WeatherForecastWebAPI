@@ -11,20 +11,28 @@ import { FormBuilder } from "@angular/forms";
 export class HomePageComponent implements OnInit {
 
   private isSubmitted = false;
-  city: string;
+  message: string = 'valleta';
+  city: string = 'Athens';
   forecast: string;
-  cw: CurrentWeatherComponent;
-  lastix: string = "Krokodilakias";
   currentWeather: any = <any>{};
 
-  constructor(private service: OpenweatherserviceService, public fb: FormBuilder) {
-    this.cw = new CurrentWeatherComponent();
-    this.cw.salamoura = this.lastix;
-    console.log(this.currentWeather);
+  constructor(
+    private service: OpenweatherserviceService,
+    public fb: FormBuilder) {
   }
 
   ngOnInit(): void {
-    //this.refreshCurrentWeather(this.city);
+    this.service.currentCity
+      .subscribe(
+        city => {
+          this.city = city
+        });
+
+    this.service.getCurrentWeather(this.city)
+      .subscribe(
+        data => {
+          this.currentWeather = data;
+        });
   }
 
   weatherSearch = this.fb.group({
@@ -38,19 +46,33 @@ export class HomePageComponent implements OnInit {
 
   onSubmit() {
     this.isSubmitted = true;
+
     if (!this.weatherSearch.valid) {
       return false;
     } else {
+
       this.forecast = this.weatherSearch.value.forecast
-      console.log(this.weatherSearch.value.city)
-      this.service.getCurrentWeather(this.weatherSearch.value.city).subscribe(data => {
-        this.currentWeather = data;
-        //this.cw.currentWeather = data;
-        //console.log(this.cw.currentWeather);
-        //console.log(this.currentWeather);
-        this.cw.refreshCurrentWeather(data);
-      });
-      return (JSON.stringify(this.weatherSearch.value))
+
+      switch (this.forecast) {
+        case "current":
+          this.service.changeCity(this.weatherSearch.value.city);
+          //this.service.getCurrentWeather(this.weatherSearch.value.city)          
+          break;
+        case "one-hour":
+          console.log(this.forecast);
+          break;
+        case "two-days":
+          console.log(this.forecast);
+          break;
+        case "seven-days":
+          console.log(this.forecast);
+          break;
+        default:
+          console.log(this.forecast);
+          break;
+      }
     }
+    return true
+    //return (JSON.stringify(this.weatherSearch.value))
   }
 }

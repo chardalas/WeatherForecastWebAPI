@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import * as moment from 'moment';
 
 
@@ -17,6 +17,7 @@ export class OpenweatherserviceService {
 
   readonly currentWeather = "http://localhost:54426/weather?city=";
 
+
   public setCurrentWea(value: any) {
     this.currentWeather2 = value;
   }
@@ -24,7 +25,18 @@ export class OpenweatherserviceService {
     this.city = value;
   }
 
+  private citySource = new BehaviorSubject<string>('randomcity');
+  currentCity = this.citySource.asObservable();
+
   constructor(private http: HttpClient) { }
+
+  changeCity(city: string) {
+    this.citySource.next(city);
+  }
+
+  setCity(city: string) {
+    this.city = city
+  }
 
   getCurrentWeather1(city: string): Observable<any[]> {
     return this.http.get<any>(this.currentWeather + city);
@@ -42,8 +54,8 @@ export class OpenweatherserviceService {
     return this.http.get<any>(this.currentWeather + city);
   }
 
-  getCurrentWeather(city: string): Observable<any[]> {
-    return this.http.get<any>(this.currentWeather + city);
+  getCurrentWeather(city: string) {
+    return this.http.get(this.currentWeather + city);
   }
 
   // getUv(lat: number, lon: number) {

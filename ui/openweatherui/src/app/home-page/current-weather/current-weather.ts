@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { OpenweatherserviceService } from 'src/app/openweatherservice.service';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { CursorError } from '@angular/compiler/src/ml_parser/lexer';
 
 @Injectable({
   providedIn: 'root'
@@ -11,37 +13,48 @@ import { Injectable } from '@angular/core';
   templateUrl: './current-weather.component.html',
   styleUrls: ['./current-weather.component.css'],
 })
+
 export class CurrentWeatherComponent implements OnInit {
 
-  city: string;
+  //message: string = 'lima';
+  city: string = 'tokio'
   forecast: string;
   currentWeather: any = <any>{};
-  salamoura: string;
 
-  //constructor(private service:OpenweatherserviceService) { }
-
-  constructor() {
-    this.currentWeather = <any>{};
-    this.city = "athens";
-  }
+  constructor(private service: OpenweatherserviceService) { }
 
   ngOnInit(): void {
-    //console.log(this.currentWeather);
-    console.log("sssss");
-    //this.refreshCurrentWeather(this.currentWeather) ;
+    this.service.currentCity
+      .subscribe(
+        city => {
+          this.city = city
+        });
+
+    this.service.getCurrentWeather(this.city)
+      .subscribe(data => {
+        this.currentWeather = data;
+      });
   }
 
-  onItemChange(forecast: any) {
-    //  console.log(" Value is : ", forecast);
+  setCityName() {
+    this.service.currentCity
+      .subscribe(
+        city => {
+          this.city = city
+        });
+
+
+    this.service.getCurrentWeather(this.city)
+    console.log(this.currentWeather)
+    console.log(this.city + '---------------->>>')
   }
 
   refreshCurrentWeather(currentWeather: any) {
+
     this.city = 'ad';
-    this.currentWeather = currentWeather;
-    //console.log(this.salamoura);
-    console.log("---");
+    this.currentWeather.Name = currentWeather.Name;
+    //console.log(this.salamoura);    
     console.log(this.currentWeather);
-    console.log("---");
     // this.service.getCurrentWeather(city).subscribe(data=>{
     //   this.currentWeather=data;
     // });
