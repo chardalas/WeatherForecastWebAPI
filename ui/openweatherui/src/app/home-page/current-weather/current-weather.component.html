@@ -1,4 +1,39 @@
-Message2123: {{city}}  ???
+<div class="table-responsive">
+  <table class="table align-middle">
+    <thead>
+      <tr>
+        <th scope="col">Temp</th>
+        <th scope="col">Min Temp</th>
+        <th scope="col">Max Tempe</th>
+        <th scope="col">Pressure</th>
+        <th scope="col">Lat</th>
+        <th scope="col">Lon</th>
+        <th scope="col">Humidity</th>
+        <th scope="col">Weather</th>
+        <th scope="col">Wind Speed</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{currentWeather.Main?.Temp - 273.15 | number:'1.0-0'}}<sup>o</sup>C</td>
+        <td>{{currentWeather.Main?.Temp_Min - 273.15 | number:'1.0-0'}}<sup>o</sup>C</td>
+        <td>{{currentWeather.Main?.Temp_Max - 273.15 | number:'1.0-0'}}<sup>o</sup>C</td>
+        <td>{{currentWeather.Main?.Pressure | number:'1.0-0'}}mb</td>
+        <td>{{currentWeather.Coord?.Lat}}</td>
+        <td>{{currentWeather.Coord?.Lon}}</td>
+        <td> {{currentWeather.Main?.Humidity | number:'1.0-0'}}%</td>
+        <td>
+          <div>{{currentWeather?.Weather[0].Description}}<img class="img-fluid"
+              src="http://openweathermap.org/img/w/{{currentWeather?.Weather[0].Icon}}.png" />
+          </div>
+        </td>
+        <td>{{currentWeather.Wind?.Speed }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+Message2123: {{city}} ???
 <h3>sssss{{currentWeather.Name}}ssss</h3>
 
 <p>{{currentWeather.name}}</p>

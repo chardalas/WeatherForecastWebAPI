@@ -11,7 +11,6 @@ import { FormBuilder } from "@angular/forms";
 export class HomePageComponent implements OnInit {
 
   private isSubmitted = false;
-  message: string = 'valleta';
   city: string = 'Athens';
   forecast: string;
   currentWeather: any = <any>{};

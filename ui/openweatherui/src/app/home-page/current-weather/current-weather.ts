@@ -16,8 +16,7 @@ import { CursorError } from '@angular/compiler/src/ml_parser/lexer';
 
 export class CurrentWeatherComponent implements OnInit {
 
-  //message: string = 'lima';
-  city: string = 'tokio'
+  city: string = 'Athens'
   forecast: string;
   currentWeather: any = <any>{};
 
@@ -33,6 +32,7 @@ export class CurrentWeatherComponent implements OnInit {
     this.service.getCurrentWeather(this.city)
       .subscribe(data => {
         this.currentWeather = data;
+        console.log(data)
       });
   }
 
