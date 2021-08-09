@@ -18,7 +18,7 @@ export class CurrentWeatherComponent implements OnInit {
 
   city: string = 'Athens'
   forecast: string;
-  currentWeather: any = <any>{};
+  weather: any = <any>{};
 
   constructor(private service: OpenweatherserviceService) { }
 
@@ -31,7 +31,7 @@ export class CurrentWeatherComponent implements OnInit {
 
     this.service.getCurrentWeather(this.city)
       .subscribe(data => {
-        this.currentWeather = data;
+        this.weather = data;
         console.log(data)
       });
   }
@@ -45,16 +45,16 @@ export class CurrentWeatherComponent implements OnInit {
 
 
     this.service.getCurrentWeather(this.city)
-    console.log(this.currentWeather)
+    console.log(this.weather)
     console.log(this.city + '---------------->>>')
   }
 
   refreshCurrentWeather(currentWeather: any) {
 
     this.city = 'ad';
-    this.currentWeather.Name = currentWeather.Name;
+    this.weather.Name = currentWeather.Name;
     //console.log(this.salamoura);    
-    console.log(this.currentWeather);
+    console.log(this.weather);
     // this.service.getCurrentWeather(city).subscribe(data=>{
     //   this.currentWeather=data;
     // });

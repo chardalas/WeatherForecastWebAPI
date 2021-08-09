@@ -15,8 +15,7 @@ export class OpenweatherserviceService {
 
   currentWeather2: any = <any>{};
 
-  readonly currentWeather = "http://localhost:54426/weather?city=";
-
+  readonly currentWeather = "http://localhost:54426/weather?current=";
 
   public setCurrentWea(value: any) {
     this.currentWeather2 = value;
@@ -25,7 +24,7 @@ export class OpenweatherserviceService {
     this.city = value;
   }
 
-  private citySource = new BehaviorSubject<string>('randomcity');
+  private citySource = new BehaviorSubject<string>('Athens');
   currentCity = this.citySource.asObservable();
 
   constructor(private http: HttpClient) { }
