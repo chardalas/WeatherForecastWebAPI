@@ -1,10 +1,5 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { OpenweatherserviceService } from 'src/app/openweatherservice.service';
-import { Injectable } from '@angular/core';
-
-@Injectable({
-  providedIn: 'root'
-})
 
 @Component({
   selector: 'app-current-weather',

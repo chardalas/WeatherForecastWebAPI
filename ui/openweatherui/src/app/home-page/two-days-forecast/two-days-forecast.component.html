@@ -15,7 +15,6 @@
                 <th scope="col">Date</th>
                 <th scope="col">Lat</th>
                 <th scope="col">Lon</th>
-
             </tr>
         </thead>
         <tbody>
@@ -34,7 +33,7 @@
                 <td>{{weather.Hourly[i]?.Wind_Speed }}</td>
                 <td>{{weather.Hourly[i]?.Clouds}}</td>
                 <td>{{weather?.Timezone}}</td>
-                <td>{{weather.Hourly[i]?.DT *1000 | date: 'dd/MM/yyyy hh:mm:ss'}}</td>
+                <td>{{weather.Hourly[i]?.DT * 1000 | date: 'dd/MM/yyyy hh:mm:ss'}}</td>
                 <td>{{weather.Lat}}</td>
                 <td>{{weather.Lon}}</td>
             </tr>

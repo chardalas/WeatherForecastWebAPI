@@ -32,11 +32,12 @@
                     <div class="form-check">
                         <input class="form-check-input" type="radio" value="seven-days" formControlName="forecast" />
                         <label class="form-check-label" for="sevendaysforecast">
-                            4 Days
+                            7 Days
                         </label>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button> Todo: change this to search and remove the readios from the form. The radios will load the related content on change.
+                <button type="submit" class="btn btn-primary">Submit</button> Todo: change this to search and remove the
+                radios from the form. The radios will load the related content on change.
             </form>
         </div>
     </div>
@@ -44,16 +45,8 @@
 <div id='container'> -->
     <!-- <div *ngIf='!city' id='search'>
 <h1>Enter location to find weather info.</h1></div> -->
- 
- <app-current-weather *ngIf="forecast === 'current'"></app-current-weather>
-    <!-- {{city}}
-    {{forecast}}
-    {{weatherSearch.value.city}}
-    {{weatherSearch.value.forecast}} -->
-    
 
-    <!-- <app-current-weather *ngIf="forecast === 'current'">
-    </app-current-weather> -->
+    <app-current-weather *ngIf="forecast === 'current'"></app-current-weather>
     <app-one-hour-forecast *ngIf="forecast === 'one-hour'"></app-one-hour-forecast>
     <app-two-days-forecast *ngIf="forecast === 'two-days'"></app-two-days-forecast>
     <app-seven-days-forecast *ngIf="forecast === 'seven-days'"></app-seven-days-forecast>
