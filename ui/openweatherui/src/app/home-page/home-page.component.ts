@@ -10,8 +10,8 @@ import { FormBuilder } from "@angular/forms";
 export class HomePageComponent implements OnInit {
 
   private isSubmitted = false;
-  city: string = 'Athens';
-  forecast: string;
+  city: string;
+  forecast: string = "current";
   currentWeather: any = <any>{};
   minutelyWeather: any = <any>{};
   hourlyWeather: any = <any>{};
@@ -22,13 +22,7 @@ export class HomePageComponent implements OnInit {
     public fb: FormBuilder) {
   }
 
-  ngOnInit(): void {
-    this.service.currentCity
-      .subscribe(
-        city => {
-          this.city = city
-        });
-  }
+  ngOnInit(): void { }
 
   weatherSearch = this.fb.group({
     forecast: [''],
@@ -39,9 +33,13 @@ export class HomePageComponent implements OnInit {
     return this.weatherSearch.get('forecast');
   }
 
-  onForecastChange(forecast: any) {
+  onForecastChange(forecast: string) {
 
-
+    this.service.currentCity
+      .subscribe(
+        city => {
+          this.city = city
+        });
 
     switch (forecast) {
       case "current":
@@ -52,6 +50,7 @@ export class HomePageComponent implements OnInit {
             });
         break;
       case "one-hour":
+        console.log("edwww")
         this.service.getMinutelyWForecast(this.city)
           .subscribe(
             data => {
@@ -73,12 +72,12 @@ export class HomePageComponent implements OnInit {
             });
         break;
       default:
-        console.log(this.forecast);
         break;
     }
-    console.log(" Value is : ", forecast);
   }
-
+  resetForecast() {
+    this.forecast = 'current'
+  }
   onSubmit() {
     this.isSubmitted = true;
 
@@ -86,32 +85,11 @@ export class HomePageComponent implements OnInit {
       return false;
     } else {
 
-      this.forecast = this.weatherSearch.value.forecast
-
-      switch (this.forecast) {
-        case "current":
-          this.service.changeCity(this.weatherSearch.value.city);
-          //this.service.getCurrentWeather(this.weatherSearch.value.city)          
-          break;
-        case "one-hour":
-          this.service.changeCity(this.weatherSearch.value.city);
-          console.log(this.forecast);
-          break;
-        case "two-days":
-          this.service.changeCity(this.weatherSearch.value.city);
-          console.log(this.forecast);
-          break;
-        case "seven-days":
-          this.service.changeCity(this.weatherSearch.value.city);
-          console.log(this.forecast);
-          break;
-        default:
-          console.log(this.forecast);
-          break;
-      }
+      //this.forecast = this.weatherSearch.value.forecast
+      //this.onForecastChange(this.weatherSearch.value.forecast)
+      this.service.changeCity(this.weatherSearch.value.city)
     }
     return true
-    //return (JSON.stringify(this.weatherSearch.value))
   }
 }
 

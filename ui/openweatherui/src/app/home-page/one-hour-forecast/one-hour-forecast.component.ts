@@ -9,9 +9,9 @@ import { OpenweatherserviceService } from 'src/app/openweatherservice.service';
 
 export class OneHourForecastComponent implements OnInit {
 
-  city: string = 'Athens'
-  forecast: string;
-  weather: any = <any>{};
+  city: string
+  forecast: string
+  weather: any = <any>{}
 
   constructor(private service: OpenweatherserviceService) { }
 
