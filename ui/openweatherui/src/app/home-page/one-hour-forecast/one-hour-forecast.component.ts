@@ -7,10 +7,24 @@ import { OpenweatherserviceService } from 'src/app/openweatherservice.service';
   styleUrls: ['./one-hour-forecast.component.css']
 })
 export class OneHourForecastComponent implements OnInit {
+  
+  city: string = 'Athens'
+  forecast: string;
+  weather: any = <any>{};
 
-  constructor() { }
+  constructor(private service: OpenweatherserviceService) { }
 
   ngOnInit(): void {
-  }
+    this.service.currentCity
+      .subscribe(
+        city => {
+          this.city = city
+        });
 
+    this.service.getMinutelyWForecast(this.city)
+    .subscribe(
+      data => {
+        this.weather = data;
+      });
+  }
 }

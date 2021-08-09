@@ -16,6 +16,7 @@ export class OpenweatherserviceService {
   currentWeather2: any = <any>{};
 
   readonly currentWeather = "http://localhost:54426/weather?current=";
+  readonly minutelyWeather = "http://localhost:54426/weather?minutely=";
 
   public setCurrentWea(value: any) {
     this.currentWeather2 = value;
@@ -41,8 +42,8 @@ export class OpenweatherserviceService {
     return this.http.get<any>(this.currentWeather + city);
   }
 
-  getOneHourForecast(city: string): Observable<any[]> {
-    return this.http.get<any>(this.currentWeather + city);
+  getMinutelyWForecast(city: string): Observable<any[]> {
+    return this.http.get<any>(this.minutelyWeather + city);
   }
 
   getTwoDaysForecast(city: string): Observable<any[]> {

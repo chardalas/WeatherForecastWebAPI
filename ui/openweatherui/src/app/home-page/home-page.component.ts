@@ -14,6 +14,7 @@ export class HomePageComponent implements OnInit {
   city: string = 'Athens';
   forecast: string;
   currentWeather: any = <any>{};
+  minutelyWeather: any = <any>{};
 
   constructor(
     private service: OpenweatherserviceService,
@@ -31,6 +32,12 @@ export class HomePageComponent implements OnInit {
       .subscribe(
         data => {
           this.currentWeather = data;
+        });
+
+    this.service.getMinutelyWForecast(this.city)
+      .subscribe(
+        data => {
+          this.minutelyWeather = data;
         });
   }
 
@@ -58,6 +65,7 @@ export class HomePageComponent implements OnInit {
           //this.service.getCurrentWeather(this.weatherSearch.value.city)          
           break;
         case "one-hour":
+          this.service.changeCity(this.weatherSearch.value.city);
           console.log(this.forecast);
           break;
         case "two-days":

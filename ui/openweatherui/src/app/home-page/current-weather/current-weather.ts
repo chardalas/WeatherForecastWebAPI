@@ -1,8 +1,6 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { OpenweatherserviceService } from 'src/app/openweatherservice.service';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { CursorError } from '@angular/compiler/src/ml_parser/lexer';
 
 @Injectable({
   providedIn: 'root'
