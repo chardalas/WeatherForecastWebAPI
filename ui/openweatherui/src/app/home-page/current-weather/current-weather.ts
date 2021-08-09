@@ -28,28 +28,4 @@ export class CurrentWeatherComponent implements OnInit {
           this.weather = data;
         });
   }
-
-  setCityName() {
-    this.service.currentCity
-      .subscribe(
-        city => {
-          this.city = city
-        });
-
-
-    this.service.getCurrentWeather(this.city)
-    console.log(this.weather)
-    console.log(this.city + '---------------->>>')
-  }
-
-  refreshCurrentWeather(currentWeather: any) {
-
-    this.city = 'ad';
-    this.weather.Name = currentWeather.Name;
-    //console.log(this.salamoura);    
-    console.log(this.weather);
-    // this.service.getCurrentWeather(city).subscribe(data=>{
-    //   this.currentWeather=data;
-    // });
-  }
 }

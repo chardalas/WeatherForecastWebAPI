@@ -40,8 +40,8 @@ export class OpenweatherserviceService {
     this.city = city
   }
 
-  getCurrentWeather(city: string) {     // todo: check why is this not Observable?
-    return this.http.get(this.currentWeather + city);
+  getCurrentWeather(city: string): Observable<any[]> {     // todo: check why is this not Observable?
+    return this.http.get<any>(this.currentWeather + city);
   }
 
   getMinutelyWForecast(city: string): Observable<any[]> {

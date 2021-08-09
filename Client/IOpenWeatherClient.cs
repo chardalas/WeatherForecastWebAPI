@@ -1,11 +1,12 @@
-﻿using System.Threading.Tasks;
-using WeatherForecast.Client;
+﻿using WeatherForecast.Client;
 
 namespace WeatherForecast.Controllers
 {
-	public interface IOpenWeatherClient
-	{
-		Task<OpenWeatherSchema> GetWeatherByCityAsync(string city);
-		//Task<OpenWeatherSchema> GetWeatherByHourAsync(string city);
-	}
+    public interface IOpenWeatherClient
+    {
+        OpenWeatherSchema GetCurrentWeatherAsync(string city);
+        OpenWeatherSchema GetMinutelyForecastAsync(string city);
+        OpenWeatherSchema GetHourlyForecastAsync(string city);
+        OpenWeatherSchema GetDailyForecastAsync(string city);
+    }
 }
