@@ -6,8 +6,9 @@ import { OpenweatherserviceService } from 'src/app/openweatherservice.service';
   templateUrl: './one-hour-forecast.component.html',
   styleUrls: ['./one-hour-forecast.component.css']
 })
+
 export class OneHourForecastComponent implements OnInit {
-  
+
   city: string = 'Athens'
   forecast: string;
   weather: any = <any>{};
@@ -22,9 +23,9 @@ export class OneHourForecastComponent implements OnInit {
         });
 
     this.service.getMinutelyWForecast(this.city)
-    .subscribe(
-      data => {
-        this.weather = data;
-      });
+      .subscribe(
+        data => {
+          this.weather = data;
+        });
   }
 }

@@ -17,6 +17,8 @@ export class OpenweatherserviceService {
 
   readonly currentWeather = "http://localhost:54426/weather?current=";
   readonly minutelyWeather = "http://localhost:54426/weather?minutely=";
+  readonly hourlyWeather = "http://localhost:54426/weather?hourly=";
+  readonly dailyWeather = "http://localhost:54426/weather?daily=";
 
   public setCurrentWea(value: any) {
     this.currentWeather2 = value;
@@ -38,29 +40,19 @@ export class OpenweatherserviceService {
     this.city = city
   }
 
-  getCurrentWeather1(city: string): Observable<any[]> {
-    return this.http.get<any>(this.currentWeather + city);
+  getCurrentWeather(city: string) {     // todo: check why is this not Observable?
+    return this.http.get(this.currentWeather + city);
   }
 
   getMinutelyWForecast(city: string): Observable<any[]> {
     return this.http.get<any>(this.minutelyWeather + city);
   }
 
-  getTwoDaysForecast(city: string): Observable<any[]> {
-    return this.http.get<any>(this.currentWeather + city);
+  getHourlyForecast(city: string): Observable<any[]> { // todo: check why is this Observable?
+    return this.http.get<any>(this.hourlyWeather + city);
   }
 
-  getSevenDaysForecast(city: string): Observable<any[]> {
-    return this.http.get<any>(this.currentWeather + city);
+  getDailyForecast(city: string): Observable<any[]> {
+    return this.http.get<any>(this.dailyWeather + city);
   }
-
-  getCurrentWeather(city: string) {
-    return this.http.get(this.currentWeather + city);
-  }
-
-  // getUv(lat: number, lon: number) {
-  //   let startDate = Math.round(+moment(new Date()).subtract(1, 'week').toDate() / 1000);
-  //   let endDate = Math.round(+moment(new Date()).add(1, 'week').toDate() / 1000);
-  //   return this.http.get(`$http://localhost:54426/uvi/history?lat=${lat}&lon=${lon}&start=${startDate}&end=${endDate}&appid=`)
-  // }
 }

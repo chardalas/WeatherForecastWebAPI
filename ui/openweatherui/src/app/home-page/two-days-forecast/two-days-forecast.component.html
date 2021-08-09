@@ -1,1 +1,43 @@
-<p>two-days-forecast works!</p>
+<div class="table-responsive">
+    <table class="table align-middle">
+        <thead>
+            <tr>
+                <th scope="col">Weather</th>
+                <th scope="col">Temp</th>
+                <th scope="col">Feels Like</th>
+                <th scope="col">UVI</th>
+                <th scope="col">Pressure</th>
+                <th scope="col">Humidity</th>
+                <th scope="col">Visibility</th>
+                <th scope="col">Wind Speed</th>
+                <th scope="col">Clouds</th>
+                <th scope="col">Timezone</th>
+                <th scope="col">Date</th>
+                <th scope="col">Lat</th>
+                <th scope="col">Lon</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor='let item of weather.Hourly; let i = index'>
+                <td>
+                    <div>{{weather.Hourly[i]?.Weather[0].Description}}<img class="img-fluid"
+                            src="http://openweathermap.org/img/w/{{weather.Hourly[i]?.Weather[0].Icon}}.png" />
+                    </div>
+                </td>
+                <td>{{weather.Hourly[i]?.Temp - 273.15 | number:'1.0-0'}} <sup>o</sup>C</td>
+                <td>{{weather.Hourly[i]?.Feels_Like - 273.15 | number:'1.0-0'}} <sup>o</sup>C</td>
+                <td>{{weather.Hourly[i]?.Uvi}} </td>
+                <td>{{weather.Hourly[i]?.Pressure | number:'1.0-0'}}mb</td>
+                <td>{{weather.Hourly[i]?.Humidity | number:'1.0-0'}}%</td>
+                <td>{{weather.Hourly[i]?.Visibility}}</td>
+                <td>{{weather.Hourly[i]?.Wind_Speed }}</td>
+                <td>{{weather.Hourly[i]?.Clouds}}</td>
+                <td>{{weather?.Timezone}}</td>
+                <td>{{weather.Hourly[i]?.DT *1000 | date: 'dd/MM/yyyy hh:mm:ss'}}</td>
+                <td>{{weather.Lat}}</td>
+                <td>{{weather.Lon}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

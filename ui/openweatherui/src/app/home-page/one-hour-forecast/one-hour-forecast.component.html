@@ -1,34 +1,33 @@
 <div class="table-responsive">
     <table class="table align-middle">
-      <thead>
-        <tr>
-          <th scope="col">Precipitation</th>
-          <th scope="col">Timezone</th>
-          <th scope="col">Date</th>
-          <th scope="col">Lat</th>
-          <th scope="col">Lon</th>
-  
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor='let l of weather.Minutely'>
-          <td>{{l?.Precipitation}} </td>          
-          <td>{{weather?.Timezone}}</td>
-          <td>{{l?.DT *1000 | date: 'dd/MM/yyyy hh:mm:ss'}} </td>
-          <td>{{weather?.Lat}}</td>
-          <td>{{weather?.Lon}}</td>
-        </tr>
-      </tbody>
+        <thead>
+            <tr>
+                <th scope="col">Precipitation</th>
+                <th scope="col">Timezone</th>
+                <th scope="col">Date</th>
+                <th scope="col">Lat</th>
+                <th scope="col">Lon</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor='let l of weather.Minutely'>
+                <td>{{l?.Precipitation}} </td>
+                <td>{{weather?.Timezone}}</td>
+                <td>{{l?.DT *1000 | date: 'dd/MM/yyyy hh:mm:ss'}} </td>
+                <td>{{weather?.Lat}}</td>
+                <td>{{weather?.Lon}}</td>
+            </tr>
+        </tbody>
     </table>
-  </div>
-  
-  Message2123: {{city}} ???
-  <h3>sssss{{weather.Name}}ssss</h3>
-  
-  <p>{{weather.name}}</p>
-  
-  
-  <h3>Feels Like: {{weather.Main?.Feels_Like - 273.15 | number:'1.0-0'}}<sup>o</sup>C</h3>
-  <h3>Temp: {{weather.Main?.Temp - 273.15 | number:'1.0-0'}}<sup>o</sup>C</h3>
-  
-  <h3 ng-if="!weather.Timezone">{{weather.Timezone}}</h3>
+</div>
+
+Message2123: {{city}} ???
+<h3>sssss{{weather.Name}}ssss</h3>
+
+<p>{{weather.name}}</p>
+
+
+<h3>Feels Like: {{weather.Main?.Feels_Like - 273.15 | number:'1.0-0'}}<sup>o</sup>C</h3>
+<h3>Temp: {{weather.Main?.Temp - 273.15 | number:'1.0-0'}}<sup>o</sup>C</h3>
+
+<h3 ng-if="!weather.Timezone">{{weather.Timezone}}</h3>

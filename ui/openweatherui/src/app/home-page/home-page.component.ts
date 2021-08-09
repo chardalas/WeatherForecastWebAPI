@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { OpenweatherserviceService } from 'src/app/openweatherservice.service';
-import { CurrentWeatherComponent } from './current-weather/current-weather';
 import { FormBuilder } from "@angular/forms";
 
 @Component({
@@ -15,6 +14,8 @@ export class HomePageComponent implements OnInit {
   forecast: string;
   currentWeather: any = <any>{};
   minutelyWeather: any = <any>{};
+  hourlyWeather: any = <any>{};
+  dailyWeather: any = <any>{};
 
   constructor(
     private service: OpenweatherserviceService,
@@ -38,6 +39,18 @@ export class HomePageComponent implements OnInit {
       .subscribe(
         data => {
           this.minutelyWeather = data;
+        });
+
+    this.service.getHourlyForecast(this.city)
+      .subscribe(
+        data => {
+          this.hourlyWeather = data;
+        });
+
+    this.service.getDailyForecast(this.city)
+      .subscribe(
+        data => {
+          this.dailyWeather = data;
         });
   }
 
@@ -69,9 +82,11 @@ export class HomePageComponent implements OnInit {
           console.log(this.forecast);
           break;
         case "two-days":
+          this.service.changeCity(this.weatherSearch.value.city);
           console.log(this.forecast);
           break;
         case "seven-days":
+          this.service.changeCity(this.weatherSearch.value.city);
           console.log(this.forecast);
           break;
         default:
