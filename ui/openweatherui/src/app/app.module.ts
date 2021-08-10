@@ -12,8 +12,6 @@ import { OneHourForecastComponent } from './home-page/one-hour-forecast/one-hour
 import { TwoDaysForecastComponent } from './home-page/two-days-forecast/two-days-forecast.component';
 import { SevenDaysForecastComponent } from './home-page/seven-days-forecast/seven-days-forecast.component';
 import { HomePageComponent } from './home-page/home-page.component';
-import { TopBarComponent } from './top-bar/top-bar.component';
-
 
 @NgModule({
   declarations: [
@@ -23,18 +21,18 @@ import { TopBarComponent } from './top-bar/top-bar.component';
     OneHourForecastComponent,
     TwoDaysForecastComponent,
     SevenDaysForecastComponent,
-    HomePageComponent,
-    TopBarComponent
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule, 
+    FormsModule,
     ReactiveFormsModule,
     RouterModule
   ],
   providers: [OpenweatherserviceService],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
