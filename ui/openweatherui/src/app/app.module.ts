@@ -12,6 +12,8 @@ import { OneHourForecastComponent } from './home-page/one-hour-forecast/one-hour
 import { TwoDaysForecastComponent } from './home-page/two-days-forecast/two-days-forecast.component';
 import { SevenDaysForecastComponent } from './home-page/seven-days-forecast/seven-days-forecast.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { SignupComponent } from './login/signup/signup.component';
+import { SigninComponent } from './login/signin/signin.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { HomePageComponent } from './home-page/home-page.component';
     OneHourForecastComponent,
     TwoDaysForecastComponent,
     SevenDaysForecastComponent,
-    HomePageComponent
+    HomePageComponent,
+    SignupComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule,

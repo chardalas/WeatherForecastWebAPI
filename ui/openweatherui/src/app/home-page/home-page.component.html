@@ -1,55 +1,54 @@
-<div id='container'>
-    <h3 class="d-flex justify-content-center">OpenWeather API</h3>
-    <div class="row">
-        <div class="col">
-            <form [formGroup]="weatherSearch" (ngSubmit)="onSubmit()">
-                <div class="row mb-3">
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" value="city" name="city" placeholder="City"
-                            aria-label="City" formControlName="city">
-                    </div>
+<h3 class="d-flex justify-content-center">OpenWeather API</h3>
+<div class="row">
+    <div class="col">
+        <form [formGroup]="weatherSearch" (ngSubmit)="onSubmit()">
+            <div class="row mb-3">
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" value="city" name="city" placeholder="City"
+                        aria-label="City" formControlName="city">
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-            <div class="col-sm-10">
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="current" value="current" [(ngModel)]="forecast"
-                        (change)="onForecastChange(forecast)" />
-                    <label class="form-check-label" for="current">
-                        Current
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="onehourforecast" value="one-hour"
-                        [(ngModel)]="forecast" (change)="onForecastChange(forecast)" />
-                    <label class="form-check-label" for="onehourforecast">
-                        1 hour
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="twodaysforecast" value="two-days"
-                        [(ngModel)]="forecast" (change)="onForecastChange(forecast)" />
-                    <label class="form-check-label" for="twodaysforecast">
-                        2 Days
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="sevendaysforecast" value="seven-days"
-                        [(ngModel)]="forecast" (change)="onForecastChange(forecast)" />
-                    <label class="form-check-label" for="sevendaysforecast">
-                        7 Days
-                    </label>
-                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <div class="col-sm-10">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="current" value="current" [(ngModel)]="forecast"
+                    (change)="onForecastChange(forecast)" />
+                <label class="form-check-label" for="current">
+                    Current
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="onehourforecast" value="one-hour"
+                    [(ngModel)]="forecast" (change)="onForecastChange(forecast)" />
+                <label class="form-check-label" for="onehourforecast">
+                    1 hour
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="twodaysforecast" value="two-days"
+                    [(ngModel)]="forecast" (change)="onForecastChange(forecast)" />
+                <label class="form-check-label" for="twodaysforecast">
+                    2 Days
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="sevendaysforecast" value="seven-days"
+                    [(ngModel)]="forecast" (change)="onForecastChange(forecast)" />
+                <label class="form-check-label" for="sevendaysforecast">
+                    7 Days
+                </label>
             </div>
         </div>
     </div>
-
-    <app-current-weather *ngIf="forecast === 'current' && city !== undefined && city !== ''"></app-current-weather>
-    <app-one-hour-forecast *ngIf="forecast === 'one-hour' && city !== undefined && city !== ''"></app-one-hour-forecast>
-    <app-two-days-forecast *ngIf="forecast === 'two-days' && city !== undefined && city !== ''"></app-two-days-forecast>
-    <app-seven-days-forecast *ngIf="forecast === 'seven-days' && city !== undefined && city !== ''">
-    </app-seven-days-forecast>
 </div>
+
+<app-current-weather *ngIf="forecast === 'current' && city !== undefined && city !== ''"></app-current-weather>
+<app-one-hour-forecast *ngIf="forecast === 'one-hour' && city !== undefined && city !== ''"></app-one-hour-forecast>
+<app-two-days-forecast *ngIf="forecast === 'two-days' && city !== undefined && city !== ''"></app-two-days-forecast>
+<app-seven-days-forecast *ngIf="forecast === 'seven-days' && city !== undefined && city !== ''">
+</app-seven-days-forecast>
+
 
 <!-- <app-top-bar></app-top-bar>
 <div id='container'>
