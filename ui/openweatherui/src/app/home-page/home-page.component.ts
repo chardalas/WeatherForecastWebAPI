@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OpenweatherserviceService } from 'src/app/openweatherservice.service';
 import { FormBuilder } from "@angular/forms";
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-home-page',
@@ -9,7 +10,6 @@ import { FormBuilder } from "@angular/forms";
 })
 export class HomePageComponent implements OnInit {
 
-  private isSubmitted = false;
   city: string;
   forecast: string = "current";
   currentWeather: any = <any>{};
@@ -35,11 +35,9 @@ export class HomePageComponent implements OnInit {
 
   onForecastChange(forecast: string) {
 
-    this.service.currentCity
-      .subscribe(
-        city => {
-          this.city = city
-        });
+    if (this.city == '' || this.city == undefined) {
+      return
+    }
 
     switch (forecast) {
       case "current":
@@ -50,7 +48,6 @@ export class HomePageComponent implements OnInit {
             });
         break;
       case "one-hour":
-        console.log("edwww")
         this.service.getMinutelyWForecast(this.city)
           .subscribe(
             data => {
@@ -75,21 +72,31 @@ export class HomePageComponent implements OnInit {
         break;
     }
   }
+
   resetForecast() {
     this.forecast = 'current'
   }
+
   onSubmit() {
-    this.isSubmitted = true;
 
-    if (!this.weatherSearch.valid) {
-      return false;
-    } else {
-
-      //this.forecast = this.weatherSearch.value.forecast
-      //this.onForecastChange(this.weatherSearch.value.forecast)
-      this.service.changeCity(this.weatherSearch.value.city)
+    if (this.weatherSearch.value.city == '') {
+      this.service.changeCity('')
+      this.resetForecast()
+      return false
     }
+
+    this.service.currentCity
+      .subscribe(
+        city => {
+          this.city = city
+        });
+
+    this.service.changeCity(this.weatherSearch.value.city)
+    //this.forecast = this.weatherSearch.value.forecast
+    this.resetForecast()
+    //this.onForecastChange(this.forecast)
     return true
+
   }
 }
 

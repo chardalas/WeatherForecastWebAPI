@@ -9,7 +9,7 @@ import { OpenweatherserviceService } from 'src/app/openweatherservice.service';
 
 export class SevenDaysForecastComponent implements OnInit {
 
-  city: string = 'Athens'
+  city: string
   forecast: string;
   weather: any = <any>{};
 
@@ -26,7 +26,6 @@ export class SevenDaysForecastComponent implements OnInit {
       .subscribe(
         data => {
           this.weather = data;
-          console.log(this.weather)
         });
   }
 }

@@ -9,7 +9,7 @@ import { OpenweatherserviceService } from 'src/app/openweatherservice.service';
 
 export class TwoDaysForecastComponent implements OnInit {
 
-  city: string = 'Athens'
+  city: string
   forecast: string;
   weather: any = <any>{};
 

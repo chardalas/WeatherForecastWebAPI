@@ -9,7 +9,7 @@ import { OpenweatherserviceService } from 'src/app/openweatherservice.service';
 
 export class CurrentWeatherComponent implements OnInit {
 
-  city: string = 'Athens'
+  city: string
   forecast: string;
   weather: any = <any>{};
 
@@ -19,7 +19,7 @@ export class CurrentWeatherComponent implements OnInit {
     this.service.currentCity
       .subscribe(
         city => {
-          this.city = city
+          this.city = city;
         });
 
     this.service.getCurrentWeather(this.city)
