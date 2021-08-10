@@ -4,8 +4,9 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path:'weather',component:HomePageComponent },
-  { path:'',component:LoginComponent }
+  { path: '', component: LoginComponent },
+  { path: 'weather', component: HomePageComponent },
+  { path: '**', redirectTo: '/', pathMatch: 'full' },
 ];
 
 @NgModule({
