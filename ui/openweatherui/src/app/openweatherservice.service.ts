@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
-import * as moment from 'moment';
 
 
 @Injectable({
@@ -9,25 +8,16 @@ import * as moment from 'moment';
 })
 
 export class OpenweatherserviceService {
-
-  private city: string;
-  private forecast: string;
-
-  currentWeather2: any = <any>{};
-
-  readonly currentWeather = "http://localhost:54426/weather?current=";
-  readonly minutelyWeather = "http://localhost:54426/weather?minutely=";
-  readonly hourlyWeather = "http://localhost:54426/weather?hourly=";
-  readonly dailyWeather = "http://localhost:54426/weather?daily=";
-
-  public setCurrentWea(value: any) {
-    this.currentWeather2 = value;
-  }
-  public setTest(value: string) {
-    this.city = value;
-  }
+  
+  readonly currentWeatherAPI = "http://localhost:54426/weather?current=";
+  readonly minutelyWeatherAPI = "http://localhost:54426/weather?minutely=";
+  readonly hourlyWeatherAPI = "http://localhost:54426/weather?hourly=";
+  readonly dailyWeatherAPI = "http://localhost:54426/weather?daily=";
+  readonly getUserAPI = "http://localhost:54426/user?id=";
+  readonly postUserAPI = "http://localhost:54426/user";  
 
   private citySource = new BehaviorSubject<string>('Athens');
+
   currentCity = this.citySource.asObservable();
 
   constructor(private http: HttpClient) { }
@@ -36,23 +26,27 @@ export class OpenweatherserviceService {
     this.citySource.next(city);
   }
 
-  setCity(city: string) {
-    this.city = city
+  getUser(id: any): Observable<any[]> {
+    return this.http.get<any>(this.getUserAPI + id);
   }
 
-  getCurrentWeather(city: string): Observable<any[]> {     // todo: check why is this not Observable?
-    return this.http.get<any>(this.currentWeather + city);
+  postUser(user: any): Observable<any[]> {
+    return this.http.get<any>(this.postUserAPI);
+  }
+
+  getCurrentWeather(city: string): Observable<any[]> {
+    return this.http.get<any>(this.currentWeatherAPI + city);
   }
 
   getMinutelyWForecast(city: string): Observable<any[]> {
-    return this.http.get<any>(this.minutelyWeather + city);
+    return this.http.get<any>(this.minutelyWeatherAPI + city);
   }
 
   getHourlyForecast(city: string): Observable<any[]> { // todo: check why is this Observable?
-    return this.http.get<any>(this.hourlyWeather + city);
+    return this.http.get<any>(this.hourlyWeatherAPI + city);
   }
 
   getDailyForecast(city: string): Observable<any[]> {
-    return this.http.get<any>(this.dailyWeather + city);
+    return this.http.get<any>(this.dailyWeatherAPI + city);
   }
 }
