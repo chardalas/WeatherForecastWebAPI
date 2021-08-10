@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using WeatherForecast.DAL;
+using WeatherForecast.Models;
 
 namespace WeatherForecast.Controllers
 {
@@ -10,7 +12,7 @@ namespace WeatherForecast.Controllers
         {
             IList<User> users = null;
 
-            using (var db = new OpenWeatherDbContext())
+            using (var db = new WeatherContext())
             {
                 users = db.Users.ToList();
             }
@@ -27,7 +29,7 @@ namespace WeatherForecast.Controllers
         {
             User user = null;
 
-            using (var db = new OpenWeatherDbContext())
+            using (var db = new WeatherContext())
             {
                 user = db.Users.Where(u => u.ID == id).Select(u => u).FirstOrDefault();
             }
@@ -45,7 +47,7 @@ namespace WeatherForecast.Controllers
             if (!ModelState.IsValid)
                 return BadRequest("Invalid data.");
 
-            using (var db = new OpenWeatherDbContext())
+            using (var db = new WeatherContext())
             {
                 db.Users.Add(new User()
                 {
