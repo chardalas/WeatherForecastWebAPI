@@ -18,8 +18,7 @@ export class HomePageComponent implements OnInit {
 
   constructor(
     private service: OpenweatherserviceService,
-    public fb: FormBuilder) {
-  }
+    public fb: FormBuilder) { }
 
   ngOnInit(): void { }
 
@@ -27,10 +26,6 @@ export class HomePageComponent implements OnInit {
     forecast: [''],
     city: ['']
   })
-
-  get myForm() {
-    return this.weatherSearch.get('forecast');
-  }
 
   onForecastChange(forecast: string) {
 
