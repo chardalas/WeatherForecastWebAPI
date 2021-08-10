@@ -26,42 +26,42 @@ namespace WeatherForecast.Controllers
         }
 
         // GET: weather/?minutely=
-        public OpenWeatherSchema GetMinutelyForecastAsync(string minutely)
+        public IHttpActionResult GetMinutelyForecastAsync(string minutely)
         {
-            var t = openWeatherClient.GetMinutelyForecastAsync(minutely);
+            var response = openWeatherClient.GetMinutelyForecastAsync(minutely);
 
-            return t;
+            if (response == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(response);
         }
 
         // GET: weather/?hourly=
-        public OpenWeatherSchema GetHourlyForecast(string hourly)
+        public IHttpActionResult GetHourlyForecast(string hourly)
         {
-            var t = openWeatherClient.GetHourlyForecastAsync(hourly);
+            var response = openWeatherClient.GetHourlyForecastAsync(hourly);
 
-            return t;
+            if (response == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(response);
         }
 
         // GET: weather/?daily=
-        public OpenWeatherSchema GetDailyForecast(string daily)
+        public IHttpActionResult GetDailyForecast(string daily)
         {
-            var t = openWeatherClient.GetDailyForecastAsync(daily);
+            var response = openWeatherClient.GetDailyForecastAsync(daily);
 
-            return t;
-        }
+            if (response == null)
+            {
+                return NotFound();
+            }
 
-        // POST: api/Default
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT: api/Default/5
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE: api/Default/5
-        public void Delete(int id)
-        {
+            return Ok(response);
         }
     }
 }
