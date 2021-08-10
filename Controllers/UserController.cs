@@ -6,7 +6,7 @@ using WeatherForecast.Models;
 
 namespace WeatherForecast.Controllers
 {
-    public class HomeController : ApiController
+    public class UserController : ApiController
     {
         public IHttpActionResult GetUsers()
         {
@@ -45,7 +45,9 @@ namespace WeatherForecast.Controllers
         public IHttpActionResult PostNewUser([FromBody] User user)
         {
             if (!ModelState.IsValid)
+            {
                 return BadRequest("Invalid data.");
+            }
 
             using (var db = new WeatherContext())
             {
@@ -61,7 +63,7 @@ namespace WeatherForecast.Controllers
                 db.SaveChanges();
             }
 
-            return Ok();
+            return Ok(user);
         }
     }
 }

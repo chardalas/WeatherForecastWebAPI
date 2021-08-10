@@ -103,7 +103,7 @@
     <Compile Include="Client\OpenWeatherSchema.cs" />
     <Compile Include="Client\OpenWeatherClient.cs" />
     <Compile Include="Client\IOpenWeatherClient.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\WeatherController.cs" />
     <Compile Include="DAL\Initialiser.cs" />
     <Compile Include="DAL\WeatherContext.cs" />
