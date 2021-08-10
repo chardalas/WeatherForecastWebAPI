@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
-import { OpenweatherloginComponent } from './openweatherlogin/openweatherlogin.component';
+import { LoginComponent } from './openweatherlogin/openweatherlogin.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path:'',component:HomePageComponent },
-  { path:'',component:OpenweatherloginComponent }
+  { path:'weather',component:HomePageComponent },
+  { path:'',component:LoginComponent }
 ];
 
 @NgModule({

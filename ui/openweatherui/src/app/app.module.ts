@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CurrentWeatherComponent } from './home-page/current-weather/current-weather';
-import { OpenweatherloginComponent } from './openweatherlogin/openweatherlogin.component';
+import { LoginComponent } from './openweatherlogin/openweatherlogin.component';
 import { OpenweatherserviceService } from './openweatherservice.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -19,7 +19,7 @@ import { TopBarComponent } from './top-bar/top-bar.component';
   declarations: [
     AppComponent,
     CurrentWeatherComponent,
-    OpenweatherloginComponent,
+    LoginComponent,
     OneHourForecastComponent,
     TwoDaysForecastComponent,
     SevenDaysForecastComponent,
