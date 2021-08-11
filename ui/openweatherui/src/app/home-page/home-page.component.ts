@@ -93,7 +93,9 @@ export class HomePageComponent implements OnInit {
 
     this.service.changeCity(this.weatherSearch.value.city)
     this.forecast = 'current'
-
+    //this.forecast = this.weatherSearch.value.forecast
+    //this.onForecastChange(this.forecast)
     return true
+
   }
 }

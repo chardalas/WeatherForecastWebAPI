@@ -14,8 +14,7 @@ export class OpenweatherserviceService {
   readonly minutelyWeatherAPI = "http://localhost:54426/weather?minutely=";
   readonly hourlyWeatherAPI = "http://localhost:54426/weather?hourly=";
   readonly dailyWeatherAPI = "http://localhost:54426/weather?daily=";
-  readonly getUserAPI = "http://localhost:54426/user?email=";
-  readonly postUserAPI = "http://localhost:54426/user";
+  readonly userAPI = "http://localhost:54426/user";
 
   email: string
   password: string
@@ -33,7 +32,7 @@ export class OpenweatherserviceService {
   getUser(email: string, password: string): Observable<string> {
     this.email = email, this.password = password
 
-    return this.http.get<any>(this.getUserAPI, {
+    return this.http.get<any>(this.userAPI, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'Authorization': 'Basic ' + btoa(email + ':' + password)
@@ -42,7 +41,7 @@ export class OpenweatherserviceService {
   }
 
   postUser(user: any): Observable<any[]> {
-    return this.http.get<any>(this.postUserAPI);
+    return this.http.get<any>(this.userAPI);
   }
 
   getCurrentWeather(city: string): Observable<any[]> {

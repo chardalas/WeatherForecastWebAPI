@@ -26,7 +26,7 @@ namespace WeatherForecast.Controllers
             return Ok(users);
         }
 
-        public IHttpActionResult GetUserById(string email, string password)
+        public IHttpActionResult PostUserLogin(string email, string password)
         {
             using (var db = new WeatherContext())
             {
