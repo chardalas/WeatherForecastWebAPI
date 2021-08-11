@@ -10,7 +10,7 @@ import { Router } from "@angular/router";
 })
 export class SigninComponent implements OnInit {
 
-  private user: any
+  private credentials: any
   email: string
   password: string
 
@@ -28,12 +28,17 @@ export class SigninComponent implements OnInit {
 
   onSubmit() {
 
-    //console.log(this.userLogin)
-    if (!this.userSignin.valid) {
+    if (this.userSignin.invalid) {
+      console.log(this.userSignin)
       return
     }
 
-    this.service.getUser(this.userSignin.value.email, this.userSignin.value.password)
+    this.credentials = {
+      'email': this.userSignin.value.email,
+      'password': this.userSignin.value.password
+    }
+
+    this.service.postLoginUser(this.credentials)
       .subscribe(
         data => {
           console.log(data)
@@ -41,8 +46,9 @@ export class SigninComponent implements OnInit {
         },
         err => {
           console.log(err)
-          if (err.status == 404) {
-            this.router.navigateByUrl('/')
+          if (err.status == 401) {
+            alert(`The user "${this.credentials.email}" does not exist`)
+            this.userSignin.reset();
           }
         },
         () => {

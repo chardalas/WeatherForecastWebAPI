@@ -38,6 +38,11 @@ namespace WeatherForecast.Client
         {
             var current = GetCurrentByCityAsync(city);
 
+            if (current.Coord == null)
+            {
+                return null;
+            }
+
             var response = client.GetAsync($"/data/2.5/onecall?lat={current.Coord.Lat}&lon={current.Coord.Lon}&exclude=minutely,hourly,daily,alerts&appid={appapi}&unit=mertics");
 
             response.Wait();

@@ -32,24 +32,24 @@ export class SignupComponent implements OnInit {
 
   onSubmit() {
 
-    //console.log(this.userLogin)
-    if (!this.userSignup.valid) {
+    if (this.userSignup.invalid) {
       return
     }
+    
     this.user = {
       'firstname': this.userSignup.value.firstname,
       'lastname': this.userSignup.value.lastname,
       'email': this.userSignup.value.email,
       'password': this.userSignup.value.password,
     }
+
     this.service.postUser(this.user)
       .subscribe(
         data => {
           console.log(data)
           this.user = data;
         },
-        err => {
-          console.log(err)
+        err => {          
           if (err.status == 404) {
             this.router.navigateByUrl('/')
           }

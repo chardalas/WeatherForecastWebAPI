@@ -41,10 +41,12 @@ export class HomePageComponent implements OnInit {
             data => {
               this.currentWeather = data;
             },
-            err => {
+            status => {
               // if user is not authenticated
-              if (err.status == 401) {
-                this.router.navigateByUrl('/')
+              console.log(status)
+              if (status == 404) {
+                this.weatherSearch.reset
+                //this.router.navigateByUrl('/')
               }
             },
             () => {

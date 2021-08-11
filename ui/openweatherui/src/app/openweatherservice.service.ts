@@ -29,13 +29,13 @@ export class OpenweatherserviceService {
     this.citySource.next(city);
   }
 
-  getUser(email: string, password: string): Observable<string> {
-    this.email = email, this.password = password
+  postLoginUser(credentials: any): Observable<string> {
+    this.email = credentials.email, this.password = credentials.password
 
-    return this.http.get<any>(this.userAPI, {
+    return this.http.post<any>(this.userAPI, credentials, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': 'Basic ' + btoa(email + ':' + password)
+        'Authorization': 'Basic ' + btoa(credentials.email + ':' + credentials.password)
       })
     });
   }

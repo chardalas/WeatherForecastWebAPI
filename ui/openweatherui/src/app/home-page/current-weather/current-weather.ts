@@ -12,6 +12,7 @@ export class CurrentWeatherComponent implements OnInit {
   city: string
   forecast: string;
   weather: any = <any>{};
+  router: any;
 
   constructor(private service: OpenweatherserviceService) { }
 
@@ -26,6 +27,17 @@ export class CurrentWeatherComponent implements OnInit {
       .subscribe(
         data => {
           this.weather = data;
+        },
+        err => {
+          // if user is not authenticated
+          if (err.status == 404) {
+            console.log(err)
+            this.router.navigateByUrl('/weather')
+            //this.router.navigateByUrl('/')
+          }
+        },
+        () => {
+          //this.router.navigateByUrl('/weather')
         });
   }
 }

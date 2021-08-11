@@ -2,11 +2,12 @@
 using System.Linq;
 using System.Web.Http;
 using WeatherForecast.DAL;
+using WeatherForecast.Filters;
 using WeatherForecast.Models;
 
 namespace WeatherForecast.Controllers
 {
-    //[WeatherAccess]
+    [WeatherAccess]
     public class UserController : ApiController
     {
         public IHttpActionResult GetUsers()
