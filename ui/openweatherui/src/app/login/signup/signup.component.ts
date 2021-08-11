@@ -8,6 +8,7 @@ import { OpenweatherserviceService } from 'src/app/openweatherservice.service';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
+
 export class SignupComponent implements OnInit {
 
   private user: any
@@ -22,7 +23,7 @@ export class SignupComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  
+
   userSignup = this.fb.group({
     firstname: new FormControl('', Validators.required),
     lastname: new FormControl('', Validators.required),
@@ -35,7 +36,7 @@ export class SignupComponent implements OnInit {
     if (this.userSignup.invalid) {
       return
     }
-    
+
     this.user = {
       'firstname': this.userSignup.value.firstname,
       'lastname': this.userSignup.value.lastname,
@@ -43,14 +44,15 @@ export class SignupComponent implements OnInit {
       'password': this.userSignup.value.password,
     }
 
-    this.service.postUser(this.user)
+    this.service.postUserCreate(this.user)
       .subscribe(
         data => {
           console.log(data)
           this.user = data;
         },
-        err => {          
-          if (err.status == 404) {
+        err => {
+          if (err.status == 401) {
+            alert('You are not authorised to access tis page')
             this.router.navigateByUrl('/')
           }
         },

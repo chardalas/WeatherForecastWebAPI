@@ -8,6 +8,7 @@ import { Router } from "@angular/router";
   templateUrl: './signin.component.html',
   styleUrls: ['./signin.component.css']
 })
+
 export class SigninComponent implements OnInit {
 
   private credentials: any
@@ -38,7 +39,7 @@ export class SigninComponent implements OnInit {
       'password': this.userSignin.value.password
     }
 
-    this.service.postLoginUser(this.credentials)
+    this.service.postUserLogin(this.credentials)
       .subscribe(
         data => {
           console.log(data)

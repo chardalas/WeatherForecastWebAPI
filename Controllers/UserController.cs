@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
+using System.Threading;
 using System.Web.Http;
 using WeatherForecast.DAL;
 using WeatherForecast.Filters;
@@ -7,31 +7,18 @@ using WeatherForecast.Models;
 
 namespace WeatherForecast.Controllers
 {
-    [WeatherAccess]
     public class UserController : ApiController
     {
-        public IHttpActionResult GetUsers()
+        [WeatherAccess]
+        [HttpPost]
+        [Route("UserLogin")]
+        public IHttpActionResult UserLogin()
         {
-            IList<User> users = null;
+            string email = Thread.CurrentPrincipal.Identity.Name;
 
             using (var db = new WeatherContext())
             {
-                users = db.Users.ToList();
-            }
-
-            if (users.Count == 0)
-            {
-                return NotFound();
-            }
-
-            return Ok(users);
-        }
-
-        public IHttpActionResult PostUserLogin(string email, string password)
-        {
-            using (var db = new WeatherContext())
-            {
-                var user = db.Users.Where(u => u.Email == email && u.Password == password).Select(u => u).FirstOrDefault();
+                var user = db.Users.Where(u => u.Email == email).Select(u => u).FirstOrDefault();
 
                 if (user == null)
                 {
@@ -42,7 +29,9 @@ namespace WeatherForecast.Controllers
             return Ok();
         }
 
-        public IHttpActionResult PostNewUser([FromBody] User user)
+        [HttpPost]
+        [Route("CreateUser")]
+        public IHttpActionResult CreateUser([FromBody] User user)
         {
             if (!ModelState.IsValid)
             {

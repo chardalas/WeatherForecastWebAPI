@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using System.Threading;
+using System.Web.Http;
 using WeatherForecast.Client;
 using WeatherForecast.Filters;
 
@@ -17,6 +18,8 @@ namespace WeatherForecast.Controllers
         // GET: weather/?current=
         public IHttpActionResult GetCurrent(string current)
         {
+            string email = Thread.CurrentPrincipal.Identity.Name;
+
             var response = openWeatherClient.GetCurrentWeatherAsync(current);
 
             if (response == null)
