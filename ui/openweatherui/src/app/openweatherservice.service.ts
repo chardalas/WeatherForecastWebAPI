@@ -40,8 +40,8 @@ export class OpenweatherserviceService {
     });
   }
 
-  postUser(user: any): Observable<any[]> {
-    return this.http.get<any>(this.userAPI);
+  postUser(user: any): Observable<any> {
+    return this.http.post<any>(this.userAPI, user);
   }
 
   getCurrentWeather(city: string): Observable<any[]> {
