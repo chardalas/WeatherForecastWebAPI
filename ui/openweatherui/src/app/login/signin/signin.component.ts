@@ -21,20 +21,19 @@ export class SigninComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  userLogin = this.fb.group({
+  userSignin = this.fb.group({
     password: new FormControl('', Validators.required),
     email: new FormControl('', [Validators.required, Validators.email]),
   });
 
-
   onSubmit() {
 
     //console.log(this.userLogin)
-    if (!this.userLogin.valid) {
+    if (!this.userSignin.valid) {
       return
     }
 
-    this.service.getUser(this.userLogin.value.email, this.userLogin.value.password)
+    this.service.getUser(this.userSignin.value.email, this.userSignin.value.password)
       .subscribe(
         data => {
           console.log(data)
