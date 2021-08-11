@@ -43,7 +43,7 @@ export class HomePageComponent implements OnInit {
             },
             err => {
               // if user is not authenticated
-              if (err.status == 404) {
+              if (err.status == 401) {
                 this.router.navigateByUrl('/')
               }
             },
@@ -93,9 +93,7 @@ export class HomePageComponent implements OnInit {
 
     this.service.changeCity(this.weatherSearch.value.city)
     this.forecast = 'current'
-    //this.forecast = this.weatherSearch.value.forecast
-    //this.onForecastChange(this.forecast)
-    return true
 
+    return true
   }
 }
