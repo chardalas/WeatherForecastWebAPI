@@ -15,6 +15,7 @@ export class HomePageComponent implements OnInit {
   minutelyWeather: any = <any>{};
   hourlyWeather: any = <any>{};
   dailyWeather: any = <any>{};
+  router: any;
 
   constructor(
     private service: OpenweatherserviceService,
@@ -39,6 +40,15 @@ export class HomePageComponent implements OnInit {
           .subscribe(
             data => {
               this.currentWeather = data;
+            },
+            err => {
+              // if user is not authenticated
+              if (err.status == 404) {
+                this.router.navigateByUrl('/')
+              }
+            },
+            () => {
+              this.router.navigateByUrl('/weather')
             });
         break;
       case "one-hour":

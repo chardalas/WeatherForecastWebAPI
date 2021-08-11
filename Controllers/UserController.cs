@@ -2,10 +2,12 @@
 using System.Linq;
 using System.Web.Http;
 using WeatherForecast.DAL;
+using WeatherForecast.Filters;
 using WeatherForecast.Models;
 
 namespace WeatherForecast.Controllers
 {
+    [WeatherAccess]
     public class UserController : ApiController
     {
         public IHttpActionResult GetUsers()
@@ -25,21 +27,19 @@ namespace WeatherForecast.Controllers
             return Ok(users);
         }
 
-        public IHttpActionResult GetUserById(int id)
+        public IHttpActionResult GetUserById(string email, string password)
         {
-            User user = null;
-
             using (var db = new WeatherContext())
             {
-                user = db.Users.Where(u => u.ID == id).Select(u => u).FirstOrDefault();
+                var user = db.Users.Where(u => u.Email == email && u.Password == password).Select(u => u).FirstOrDefault();
+
+                if (user == null)
+                {
+                    return NotFound();
+                }
             }
 
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(user);
+            return Ok();
         }
 
         public IHttpActionResult PostNewUser([FromBody] User user)

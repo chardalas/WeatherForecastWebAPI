@@ -107,10 +107,12 @@
     <Compile Include="Controllers\WeatherController.cs" />
     <Compile Include="DAL\Initialiser.cs" />
     <Compile Include="DAL\WeatherContext.cs" />
+    <Compile Include="Filters\WeatherAccess.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserValidation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

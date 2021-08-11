@@ -1,8 +1,10 @@
 ﻿using System.Web.Http;
 using WeatherForecast.Client;
+using WeatherForecast.Filters;
 
 namespace WeatherForecast.Controllers
 {
+    [WeatherAccess]
     public class WeatherController : ApiController
     {
         private IOpenWeatherClient openWeatherClient;

@@ -22,19 +22,19 @@ export class SigninComponent implements OnInit {
   ngOnInit(): void { }
 
   userLogin = this.fb.group({
-    password: new FormControl('',Validators.required),
-    email: new FormControl('',[Validators.required,Validators.email]),
+    password: new FormControl('', Validators.required),
+    email: new FormControl('', [Validators.required, Validators.email]),
   });
 
 
   onSubmit() {
 
-    console.log(this.userLogin)
+    //console.log(this.userLogin)
     if (!this.userLogin.valid) {
-       return
+      return
     }
 
-    this.service.getUser(this.userLogin.value.email)
+    this.service.getUser(this.userLogin.value.email, this.userLogin.value.password)
       .subscribe(
         data => {
           console.log(data)
@@ -44,7 +44,6 @@ export class SigninComponent implements OnInit {
           console.log(err)
           if (err.status == 404) {
             this.router.navigateByUrl('/')
-            //  alert('The user was  not found')
           }
         },
         () => {
