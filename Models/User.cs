@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace WeatherForecast.Models
 {
@@ -12,6 +13,6 @@ namespace WeatherForecast.Models
         [Required]
         public string Email { get; set; }
         [Required]
-        public string Password { get; set; }
+        public Byte[] Password { get; set; }
     }
 }

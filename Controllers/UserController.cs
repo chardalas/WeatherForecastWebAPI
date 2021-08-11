@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Data.SqlClient;
+using System.Linq;
 using System.Threading;
 using System.Web.Http;
 using WeatherForecast.DAL;
@@ -40,16 +41,36 @@ namespace WeatherForecast.Controllers
 
             using (var db = new WeatherContext())
             {
-                db.Users.Add(new User()
-                {
-                    FirstName = user.FirstName,
-                    LastName = user.LastName,
-                    Email = user.Email,
-                    Password = user.Password,
 
-                });
+                db.Database.ExecuteSqlCommand("dbo.CreateUser @FirstName, @LastName, @email, @Password",
+                    new SqlParameter
+                    {
+                        ParameterName = "FirstName",
+                        Value = user.FirstName
+                    }, new SqlParameter
+                    {
+                        ParameterName = "LastName",
+                        Value = user.LastName
+                    }, new SqlParameter
+                    {
+                        ParameterName = "email",
+                        Value = user.Email
+                    }, new SqlParameter
+                    {
+                        ParameterName = "Password",
+                        Value = user.Password
+                    });
 
-                db.SaveChanges();
+                //db.Users.Add(new User()
+                //{
+                //    FirstName = user.FirstName,
+                //    LastName = user.LastName,
+                //    Email = user.Email,
+                //    Password = user.Password,
+
+                //});
+
+                //db.SaveChanges();
             }
 
             return Ok(user);

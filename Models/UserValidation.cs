@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Text;
 using WeatherForecast.DAL;
 
 namespace WeatherForecast.Models
@@ -10,7 +11,8 @@ namespace WeatherForecast.Models
         {
             using (var db = new WeatherContext())
             {
-                return db.Users.Any(u => u.Email.Equals(email, StringComparison.OrdinalIgnoreCase) && u.Password == password);
+                var pass = Encoding.ASCII.GetBytes(password);
+                return db.Users.Any(u => u.Email.Equals(email, StringComparison.OrdinalIgnoreCase) && u.Password == pass);
             }
         }
     }
