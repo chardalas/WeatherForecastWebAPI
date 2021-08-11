@@ -46,18 +46,42 @@ export class OpenweatherserviceService {
   }
 
   getCurrentWeather(city: string): Observable<any[]> {
-    return this.http.get<any>(this.currentWeatherAPI + city);
+    return this.http.get<any>(this.currentWeatherAPI + city,
+      {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': 'Basic ' + btoa(this.email + ':' + this.password)
+        })
+      });
   }
 
   getMinutelyWForecast(city: string): Observable<any[]> {
-    return this.http.get<any>(this.minutelyWeatherAPI + city);
+    return this.http.get<any>(this.minutelyWeatherAPI + city,
+      {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': 'Basic ' + btoa(this.email + ':' + this.password)
+        })
+      });
   }
 
-  getHourlyForecast(city: string): Observable<any[]> { // todo: check why is this Observable?
-    return this.http.get<any>(this.hourlyWeatherAPI + city);
+  getHourlyForecast(city: string): Observable<any[]> {
+    return this.http.get<any>(this.hourlyWeatherAPI + city,
+      {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': 'Basic ' + btoa(this.email + ':' + this.password)
+        })
+      });
   }
 
   getDailyForecast(city: string): Observable<any[]> {
-    return this.http.get<any>(this.dailyWeatherAPI + city);
+    return this.http.get<any>(this.dailyWeatherAPI + city,
+      {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': 'Basic ' + btoa(this.email + ':' + this.password)
+        })
+      });
   }
 }

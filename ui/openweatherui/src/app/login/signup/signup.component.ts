@@ -50,14 +50,10 @@ export class SignupComponent implements OnInit {
           console.log(data)
           this.user = data;
         },
-        err => {
-          if (err.status == 401) {
-            alert('You are not authorised to access tis page')
-            this.router.navigateByUrl('/')
-          }
+        err => {          
         },
         () => {
-          this.router.navigateByUrl('/weather')
+          this.router.navigateByUrl('/')
         }
       );
   }

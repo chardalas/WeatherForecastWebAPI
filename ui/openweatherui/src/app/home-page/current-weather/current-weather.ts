@@ -1,4 +1,5 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { OpenweatherserviceService } from 'src/app/openweatherservice.service';
 
 @Component({
@@ -12,9 +13,9 @@ export class CurrentWeatherComponent implements OnInit {
   city: string
   forecast: string;
   weather: any = <any>{};
-  router: any;
 
-  constructor(private service: OpenweatherserviceService) { }
+  constructor(private service: OpenweatherserviceService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.service.currentCity
@@ -29,11 +30,14 @@ export class CurrentWeatherComponent implements OnInit {
           this.weather = data;
         },
         err => {
-          // if user is not authenticated
+          if (err.status == 401) {
+            this.router.navigateByUrl('/')
+            alert('You are not authorised to access this page')
+          }
+
           if (err.status == 404) {
-            console.log(err)
+            alert(`The city "${this.city}" does not exist`)
             this.router.navigateByUrl('/weather')
-            //this.router.navigateByUrl('/')
           }
         },
         () => {

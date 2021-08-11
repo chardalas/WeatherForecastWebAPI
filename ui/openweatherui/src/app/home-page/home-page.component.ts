@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OpenweatherserviceService } from 'src/app/openweatherservice.service';
 import { FormBuilder } from "@angular/forms";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
@@ -15,10 +16,10 @@ export class HomePageComponent implements OnInit {
   minutelyWeather: any = <any>{};
   hourlyWeather: any = <any>{};
   dailyWeather: any = <any>{};
-  router: any;
 
   constructor(
     private service: OpenweatherserviceService,
+    private router: Router,
     public fb: FormBuilder) { }
 
   ngOnInit(): void { }
@@ -41,12 +42,15 @@ export class HomePageComponent implements OnInit {
             data => {
               this.currentWeather = data;
             },
-            status => {
-              // if user is not authenticated
-              console.log(status)
-              if (status == 404) {
-                this.weatherSearch.reset
-                //this.router.navigateByUrl('/')
+            err => {
+              if (err.status == 401) {
+                this.router.navigateByUrl('/')
+                alert('You are not authorised to access this page')
+              }
+              
+              if (err.status == 404) {
+                alert(`The city "${this.city}" does not exist`)
+                this.weatherSearch.reset();
               }
             },
             () => {
