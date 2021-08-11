@@ -5,7 +5,7 @@ using WeatherForecast.Models;
 namespace WeatherForecast.DAL
 {
     // Alternative to DropCreateDatabaseAlways :: DropCreateDatabaseIfModelChanges    
-    public class Initialiser : DropCreateDatabaseIfModelChanges<WeatherContext>
+    public class Initialiser : DropCreateDatabaseAlways<WeatherContext>
     {
         protected override void Seed(WeatherContext context)
         {
