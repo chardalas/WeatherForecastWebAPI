@@ -17,6 +17,6 @@ BEGIN
 
 	-- Insert statements for procedure here
 	 INSERT INTO dbo.[User] (FirstName, LastName, Email, Password)
-		VALUES(@firstName, @lastName, @email, HASHBYTES('SHA2_512', @password))
+		VALUES(@firstName, @lastName, @email, HASHBYTES('MD5', @password))
 
 END
