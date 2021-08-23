@@ -60,17 +60,6 @@ namespace WeatherForecast.Controllers
                         ParameterName = "Password",
                         Value = user.Password
                     });
-
-                //db.Users.Add(new User()
-                //{
-                //    FirstName = user.FirstName,
-                //    LastName = user.LastName,
-                //    Email = user.Email,
-                //    Password = user.Password,
-
-                //});
-
-                //db.SaveChanges();
             }
 
             return Ok(user);

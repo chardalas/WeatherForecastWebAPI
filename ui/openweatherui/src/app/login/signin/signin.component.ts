@@ -51,6 +51,11 @@ export class SigninComponent implements OnInit {
             alert(`The user "${this.credentials.email}" does not exist`)
             this.userSignin.reset();
           }
+
+          if (err.status == 500) {
+            alert(`Something unexpected happened. Error:${err.status}`)
+            this.userSignin.reset();
+          }
         },
         () => {
           this.router.navigateByUrl('/weather')
