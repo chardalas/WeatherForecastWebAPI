@@ -11,6 +11,8 @@ namespace WeatherForecast.Models
         {
             using (var db = new WeatherContext())
             {
+                var t = db.Users.Where(u => u.Email == email).FirstOrDefault();
+
                 var pass = Encoding.ASCII.GetBytes(password);
                 return db.Users.Any(u => u.Email.Equals(email, StringComparison.OrdinalIgnoreCase) && u.Password == pass);
             }
