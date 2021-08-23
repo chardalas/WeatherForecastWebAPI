@@ -51,7 +51,5 @@ namespace WeatherForecast.Models
 
             }
         }
-
-
     }
 }
