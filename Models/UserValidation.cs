@@ -48,7 +48,6 @@ namespace WeatherForecast.Models
                 Console.ReadLine();
 
                 return db.Users.Any(u => u.Email.Equals(email, StringComparison.OrdinalIgnoreCase) && u.Password == tmpNewHash);
-
             }
         }
     }
