@@ -6,6 +6,7 @@ using WeatherForecast.DAL;
 using WeatherForecast.Filters;
 using WeatherForecast.Models;
 
+// Responsible for user creation
 namespace WeatherForecast.Controllers
 {
     public class UserController : ApiController
